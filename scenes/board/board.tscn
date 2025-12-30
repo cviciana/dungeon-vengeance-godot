@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://i2hkecgyc03g"]
+
+[ext_resource type="Script" uid="uid://ch6mh0rdibw5t" path="res://scripts/board/board.gd" id="1_s78fa"]
+[ext_resource type="PackedScene" uid="uid://d3lhcpia45b7o" path="res://scenes/board/Tile.tscn" id="2_jnyf0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jnyf0"]
+albedo_color = Color(0.039215688, 0.047058824, 0.0627451, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jnyf0"]
+material = SubResource("StandardMaterial3D_jnyf0")
+size = Vector2(15, 15)
+center_offset = Vector3(0, -0.11, 0)
+
+[node name="Board" type="Node3D"]
+script = ExtResource("1_s78fa")
+tile_scene = ExtResource("2_jnyf0")
+tile_gap = 0.0
+grid_line_color = Color(0.5294118, 0.5294118, 0.5294118, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("PlaneMesh_jnyf0")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3lhcpia45b7o"]
+
+[ext_resource type="Script" uid="uid://cim81rhp1xtyq" path="res://scripts/board/tile.gd" id="1_ts3a1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_346wt"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ts3a1"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cy2v4"]
+size = Vector3(1, 0.2, 1)
+
+[node name="Tile" type="StaticBody3D"]
+script = ExtResource("1_ts3a1")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03673017, 0.06585693, 0)
+mesh = SubResource("BoxMesh_346wt")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_ts3a1")
+
+[node name="HitArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+shape = SubResource("BoxShape3D_cy2v4")
