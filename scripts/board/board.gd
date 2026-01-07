@@ -13,6 +13,8 @@ extends Node3D
 
 var tiles: Dictionary = {} # Vector2i -> Tile node
 var _hovered_tile: Node3D = null
+var _selected_tile: Node3D = null
+
 
 
 func _ready() -> void:
@@ -167,3 +169,7 @@ func _update_hover() -> void:
 	_hovered_tile = new_tile
 	if _hovered_tile != null:
 		_hovered_tile.call("set_highlight", true)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_select_tile_under_mouse()
